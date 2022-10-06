@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Table
 @Entity
@@ -30,7 +31,7 @@ public class Books {
     @Column
     private int text_reviews_count;
     @Column
-    private String publication_date;
+    private LocalDate publication_date;
     @Column
     private String publisher;
 
@@ -78,7 +79,7 @@ public class Books {
         return text_reviews_count;
     }
 
-    public String getPublication_date() {
+    public LocalDate getPublication_date() {
         return publication_date;
     }
 
