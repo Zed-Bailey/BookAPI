@@ -46,6 +46,7 @@ all endpoints are `GET` endpoints and will return a json response similar to the
 ## Endpoints
 
 ```
+/books # returns all the books
 /books/{id} # get book by id
 
 /books/isbn/{isbn} # get book by isbn
@@ -63,5 +64,6 @@ all endpoints are `GET` endpoints and will return a json response similar to the
 /books/published?after={date} # returns all books published after this date
 /books/published?before={date} # returns all books published before this date
 
-/books/publisher/{publisher} # return all books by publisher
+/books/publishers # return all publishers
+/books/published?by={publisher} # returns all books published by publisher
 ```
