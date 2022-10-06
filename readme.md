@@ -1,7 +1,8 @@
 # Book API
 
 This is a book api built
-on [top of this kaggle dataset](https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks?resource=download)
+on [top of this kaggle dataset](https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks?resource=download). The
+data has been cleaned due to mismatched columns in the original dataset
 
 Built to learn java and spring boot
 
@@ -11,8 +12,8 @@ all endpoints are `GET` endpoints and will return a json response similar to the
 
 ```json
 {
-  "count": 20,
-  "results": [],
+  "count": 3,
+  "results": [{}, {}, {}],
   "error": "error string"
 }
 ```
@@ -22,17 +23,22 @@ all endpoints are `GET` endpoints and will return a json response similar to the
 `results` An array of book models
 
 `error` if response status code == 404, then the error string will be filled with an error
+
+#### Book Model
+
 ```json
 {
-  "bookID" : 0,
-  "title" : "",
+  "bookID": 0,
+  "title": "",
   "authors": "",
   "average rating": 0.0,
   "isbn": "",
   "isbn13": "",
   "language": "eng",
   "num_pages": 0,
-  "publication_date": "",
+  "ratings_count": 0,
+  "text_reviews_count": 0,
+  "publication_date": "yyyy-MM-dd",
   "publisher": ""
 }
 ```
@@ -47,8 +53,8 @@ all endpoints are `GET` endpoints and will return a json response similar to the
 
 /books/author?v={author name} # get book by author
 
-/books/rating?gt={greater then} # return all books with rating greater then
-/books/rating?lt={less then} # return all books with ratings less then
+/books/rating?gt={greater then} # return all books with rating greater than
+/books/rating?lt={less then} # return all books with ratings less than
 
 /books/languagecodes # returns all the language codes
 /books?language={language code} # return books by language code
