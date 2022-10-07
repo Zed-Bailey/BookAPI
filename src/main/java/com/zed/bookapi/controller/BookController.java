@@ -57,13 +57,16 @@ public class BookController {
         return new ResponseEntity<>(new BookResponse(authorBooks), HttpStatus.OK);
     }
 
-    @GetMapping("/books/rating")
+    @GetMapping(value = "/books/rating", params = {"gt"})
     public ResponseEntity<BookResponse> getBooksWithRatingGreaterThan(@RequestParam(name = "gt") double gt) {
         return new ResponseEntity<>(new BookResponse(service.getBooksWithRatingGreaterThan(gt)), HttpStatus.OK);
     }
 
-    @GetMapping("/books/rating")
+    @GetMapping(value = "/books/rating", params = {"lt"})
     public ResponseEntity<BookResponse> getBooksWithRatingLessThan(@RequestParam(name = "lt") double lt) {
+//        if(gt != -1) {
+//            return new ResponseEntity<>(new BookResponse(service.getBooksWithRatingGreaterThan(gt)), HttpStatus.OK);
+//        }
         return new ResponseEntity<>(new BookResponse(service.getBooksWithRatingLessThan(lt)), HttpStatus.OK);
     }
 
@@ -72,24 +75,24 @@ public class BookController {
         return new ResponseEntity<>(new CategoryResponse(service.getPublishers()), HttpStatus.OK);
     }
 
-    @GetMapping("/books/published")
+    @GetMapping(value = "/books/published", params = {"by"})
     public ResponseEntity<BookResponse> getBooksPublished(@RequestParam(name = "by") String by) {
         return new ResponseEntity<>(new BookResponse(service.getBooksByPublisher(by)), HttpStatus.OK);
     }
 
-    @GetMapping("/books/published")
+    @GetMapping(value = "/books/published", params = {"before"})
     public BookResponse getBooksPublishedBefore(@RequestParam(name = "before") String publishedBefore) {
         LocalDate date = LocalDate.parse(publishedBefore);
         return new BookResponse(service.getBooksPublishedBefore(date));
     }
 
-    @GetMapping("/books/published")
+    @GetMapping(value = "/books/published", params = {"on"})
     public BookResponse getBooksPublishedOn(@RequestParam(name = "on") String publishedOn) {
         LocalDate date = LocalDate.parse(publishedOn);
         return new BookResponse(service.getBooksPublishedOn(date));
     }
 
-    @GetMapping("/books/published")
+    @GetMapping(value = "/books/published", params = {"after"})
     public BookResponse getBooksPublishedAfter(@RequestParam(name = "after") String publishedAfter) {
         LocalDate date = LocalDate.parse(publishedAfter);
         return new BookResponse(service.getBooksPublishedAfter(date));
@@ -100,7 +103,7 @@ public class BookController {
         return new ResponseEntity<>(new CategoryResponse(service.getLanguageCodes()), HttpStatus.OK);
     }
 
-    @GetMapping("/books")
+    @GetMapping(value = "/books", params = {"language"})
     public ResponseEntity<BookResponse> getBooksByLanguage(@RequestParam(name = "language") String code) {
         return new ResponseEntity<>(new BookResponse(service.getBooksWithLanguageCode(code)), HttpStatus.OK);
     }
