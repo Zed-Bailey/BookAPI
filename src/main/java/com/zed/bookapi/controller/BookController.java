@@ -33,6 +33,11 @@ public class BookController {
                 .orElseGet(() -> new ResponseEntity<>(new BookResponse("No book found with that ID"), HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping(value = "/books", params = {"query"})
+    public ResponseEntity<BookResponse> GetBooksBySearchQuery(@RequestParam("query") String query) {
+        return new ResponseEntity<>(new BookResponse(service.searchBooksByQuery(query)), HttpStatus.OK);
+    }
+
     @GetMapping("/books/isbn/{isbn}")
     public ResponseEntity<BookResponse> GetBookByISBN(@PathVariable String isbn) {
         var book = service.getBookByISBN(isbn);

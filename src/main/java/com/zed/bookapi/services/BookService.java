@@ -28,6 +28,10 @@ public class BookService {
         return repository.findById(id);
     }
 
+    public List<Books> searchBooksByQuery(String query) {
+        return (List<Books>) repository.searchBooks(query);
+    }
+
     public List<Books> getBooksByAuthor(String author) {
         return (List<Books>) repository.getBooksByAuthor(author);
     }

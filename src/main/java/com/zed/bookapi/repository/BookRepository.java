@@ -8,6 +8,13 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 public interface BookRepository extends CrudRepository<Books, Integer> {
+
+    /*
+        Search book by query
+     */
+    @Query("select b from Books b where b.title like %?1%")
+    Collection<Books> searchBooks(String query);
+
     /*
         Get books by ISBN
      */
