@@ -1,16 +1,15 @@
 package com.zed.bookapi.controller;
 
 import com.zed.bookapi.model.BookResponse;
+import com.zed.bookapi.model.Books;
 import com.zed.bookapi.model.CategoryResponse;
 import com.zed.bookapi.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.time.LocalDate;
 
 @RestController
@@ -21,8 +20,23 @@ public class BookController {
 
 
     @GetMapping("/books")
-    public ResponseEntity<BookResponse> HelloWorld() {
+    public ResponseEntity<BookResponse> GetAllBooks() {
         return new ResponseEntity<>(new BookResponse(service.getBooks()), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/books", params = {"query"})
+    public ResponseEntity<BookResponse> GetBooksBySearchQuery(@RequestParam("query") String query) {
+        return new ResponseEntity<>(new BookResponse(service.searchBooksByQuery(query)), HttpStatus.OK);
+    }
+
+    @PostMapping("/books")
+    public ResponseEntity<BookResponse> PostNewBook(@RequestBody Books book) {
+
+        if (book == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(new BookResponse(service.createBook(book)), HttpStatus.OK);
     }
 
     @GetMapping("/books/{id}")
@@ -33,9 +47,16 @@ public class BookController {
                 .orElseGet(() -> new ResponseEntity<>(new BookResponse("No book found with that ID"), HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping(value = "/books", params = {"query"})
-    public ResponseEntity<BookResponse> GetBooksBySearchQuery(@RequestParam("query") String query) {
-        return new ResponseEntity<>(new BookResponse(service.searchBooksByQuery(query)), HttpStatus.OK);
+    /**
+     * Deletes the book with the ID passed through the URI param
+     *
+     * @param id the id of the book to delete
+     * @return a response entity
+     */
+    @DeleteMapping("/books/{id}")
+    public ResponseEntity<Object> DeleteBookByID(@PathVariable int id) {
+        service.deleteBookByID(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/books/isbn/{isbn}")
@@ -69,9 +90,6 @@ public class BookController {
 
     @GetMapping(value = "/books/rating", params = {"lt"})
     public ResponseEntity<BookResponse> getBooksWithRatingLessThan(@RequestParam(name = "lt") double lt) {
-//        if(gt != -1) {
-//            return new ResponseEntity<>(new BookResponse(service.getBooksWithRatingGreaterThan(gt)), HttpStatus.OK);
-//        }
         return new ResponseEntity<>(new BookResponse(service.getBooksWithRatingLessThan(lt)), HttpStatus.OK);
     }
 
