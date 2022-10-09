@@ -1,9 +1,6 @@
 package com.zed.bookapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Table
@@ -34,6 +31,11 @@ public class Books {
     private LocalDate publication_date;
     @Column
     private String publisher;
+
+
+    public Books() {
+
+    }
 
     /*
      *   GENERATED GETTERS
@@ -87,5 +89,54 @@ public class Books {
         return publisher;
     }
 
+    /*
+        SETTERS
+     */
+    public void setBookID(int bookID) {
+        this.bookID = bookID;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthors(String authors) {
+        this.authors = authors;
+    }
+
+    public void setAverage_rating(double average_rating) {
+        this.average_rating = average_rating;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setIsbn13(String isbn13) {
+        this.isbn13 = isbn13;
+    }
+
+    public void setLanguage_code(String language_code) {
+        this.language_code = language_code;
+    }
+
+    public void setNum_pages(int num_pages) {
+        this.num_pages = num_pages;
+    }
+
+    public void setRatings_count(int ratings_count) {
+        this.ratings_count = ratings_count;
+    }
+
+    public void setText_reviews_count(int text_reviews_count) {
+        this.text_reviews_count = text_reviews_count;
+    }
+
+    public void setPublication_date(LocalDate publication_date) {
+        this.publication_date = publication_date;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 }

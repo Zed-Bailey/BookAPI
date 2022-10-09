@@ -2,14 +2,13 @@ package com.zed.bookapi.controller;
 
 import com.zed.bookapi.model.BookResponse;
 import com.zed.bookapi.model.Books;
-import com.zed.bookapi.model.CategoryResponse;
+import com.zed.bookapi.model.ListResponse;
 import com.zed.bookapi.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 
 @RestController
@@ -94,8 +93,8 @@ public class BookController {
     }
 
     @GetMapping("/books/publishers")
-    public ResponseEntity<CategoryResponse> getAllPublishers() {
-        return new ResponseEntity<>(new CategoryResponse(service.getPublishers()), HttpStatus.OK);
+    public ResponseEntity<ListResponse> getAllPublishers() {
+        return new ResponseEntity<>(new ListResponse(service.getPublishers()), HttpStatus.OK);
     }
 
     @GetMapping(value = "/books/published", params = {"by"})
@@ -122,8 +121,8 @@ public class BookController {
     }
 
     @GetMapping("/books/languagecodes")
-    public ResponseEntity<CategoryResponse> getLanguageCodes() {
-        return new ResponseEntity<>(new CategoryResponse(service.getLanguageCodes()), HttpStatus.OK);
+    public ResponseEntity<ListResponse> getLanguageCodes() {
+        return new ResponseEntity<>(new ListResponse(service.getLanguageCodes()), HttpStatus.OK);
     }
 
     @GetMapping(value = "/books", params = {"language"})

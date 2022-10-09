@@ -15,6 +15,9 @@ public interface BookRepository extends CrudRepository<Books, Integer> {
     @Query("select b from Books b where b.title like %?1%")
     Collection<Books> searchBooks(String query);
 
+    @Query("select max(b.bookID) from Books b")
+    int getMaxBookID();
+
     /*
         Get books by ISBN
      */

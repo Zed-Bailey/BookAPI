@@ -81,4 +81,24 @@ public class BookService {
         return (List<Books>) repository.getBooksPublishedAfter(date);
     }
 
+    /*
+     * DELETE
+     */
+    public void deleteBookByID(int id) {
+        repository.deleteById(id);
+    }
+
+    /*
+    Create book
+     */
+    public Books createBook(Books b) {
+        /*
+        this is not the ideal way to do this as it requires an extra DB call
+        but h2 will not update the sequence variable after inserting the data from the csv
+         */
+        var lastID = repository.getMaxBookID();
+        b.setBookID(lastID + 1);
+        return repository.save(b);
+    }
+
 }
