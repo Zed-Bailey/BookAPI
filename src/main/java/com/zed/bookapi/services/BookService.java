@@ -14,6 +14,10 @@ public class BookService {
     @Autowired
     private BookRepository repository;
 
+    /*
+        GET
+     */
+
     public List<Books> getBooks() {
         return (List<Books>) repository.findAll();
     }
@@ -27,6 +31,7 @@ public class BookService {
     public Optional<Books> getBookByID(int id) {
         return repository.findById(id);
     }
+
 
     public List<Books> searchBooksByQuery(String query) {
         return (List<Books>) repository.searchBooks(query);
@@ -89,7 +94,7 @@ public class BookService {
     }
 
     /*
-    Create book
+        POST
      */
     public Books createBook(Books b) {
         /*
@@ -99,6 +104,24 @@ public class BookService {
         var lastID = repository.getMaxBookID();
         b.setBookID(lastID + 1);
         return repository.save(b);
+    }
+
+    /*
+       PUT
+    */
+    public Books updateBook(Books with, int id) {
+        var toUpdate = repository.findById(id);
+        if (toUpdate.isPresent()) {
+            // get value from optional
+            var book = toUpdate.get();
+            // update class
+            book.UpdateDetails(with);
+            // save
+            return repository.save(book);
+        } else {
+            // if book doesn't exist then it will be created
+            return createBook(with);
+        }
     }
 
 }

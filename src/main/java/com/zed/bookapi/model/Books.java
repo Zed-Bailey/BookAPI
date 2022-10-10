@@ -37,6 +37,25 @@ public class Books {
 
     }
 
+    /**
+     * updates the class with the new details from the passed in book model
+     *
+     * @param with the values to update the class with
+     */
+    public void UpdateDetails(Books with) {
+        setTitle(with.getTitle());
+        setAuthors(with.getAuthors());
+        setAverageRating(with.getAverageRating());
+        setIsbn(with.getIsbn());
+        setIsbn13(with.getIsbn13());
+        setLanguageCode(with.getLanguageCode());
+        setNumPages(with.getNumPages());
+        setRatingsCount(with.getRatingsCount());
+        setTextReviewsCount(with.getTextReviewsCount());
+        setPublicationDate(with.getPublicationDate());
+        setPublisher(with.getPublisher());
+    }
+
     /*
      *   GENERATED GETTERS
      */
@@ -53,7 +72,7 @@ public class Books {
         return authors;
     }
 
-    public double getAverage_rating() {
+    public double getAverageRating() {
         return average_rating;
     }
 
@@ -65,23 +84,23 @@ public class Books {
         return isbn13;
     }
 
-    public String getLanguage_code() {
+    public String getLanguageCode() {
         return language_code;
     }
 
-    public int getNum_pages() {
+    public int getNumPages() {
         return num_pages;
     }
 
-    public int getRatings_count() {
+    public int getRatingsCount() {
         return ratings_count;
     }
 
-    public int getText_reviews_count() {
+    public int getTextReviewsCount() {
         return text_reviews_count;
     }
 
-    public LocalDate getPublication_date() {
+    public LocalDate getPublicationDate() {
         return publication_date;
     }
 
@@ -90,7 +109,7 @@ public class Books {
     }
 
     /*
-        SETTERS
+        GENERATED SETTERS
      */
     public void setBookID(int bookID) {
         this.bookID = bookID;
@@ -104,7 +123,7 @@ public class Books {
         this.authors = authors;
     }
 
-    public void setAverage_rating(double average_rating) {
+    public void setAverageRating(double average_rating) {
         this.average_rating = average_rating;
     }
 
@@ -116,23 +135,23 @@ public class Books {
         this.isbn13 = isbn13;
     }
 
-    public void setLanguage_code(String language_code) {
+    public void setLanguageCode(String language_code) {
         this.language_code = language_code;
     }
 
-    public void setNum_pages(int num_pages) {
+    public void setNumPages(int num_pages) {
         this.num_pages = num_pages;
     }
 
-    public void setRatings_count(int ratings_count) {
+    public void setRatingsCount(int ratings_count) {
         this.ratings_count = ratings_count;
     }
 
-    public void setText_reviews_count(int text_reviews_count) {
+    public void setTextReviewsCount(int text_reviews_count) {
         this.text_reviews_count = text_reviews_count;
     }
 
-    public void setPublication_date(LocalDate publication_date) {
+    public void setPublicationDate(LocalDate publication_date) {
         this.publication_date = publication_date;
     }
 

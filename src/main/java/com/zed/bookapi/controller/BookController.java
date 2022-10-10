@@ -58,6 +58,11 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping("/books/{id}")
+    public ResponseEntity<BookResponse> UpdateBookByID(@RequestBody Books newBook, @PathVariable int id) {
+        return new ResponseEntity<>(new BookResponse(service.updateBook(newBook, id)), HttpStatus.OK);
+    }
+
     @GetMapping("/books/isbn/{isbn}")
     public ResponseEntity<BookResponse> GetBookByISBN(@PathVariable String isbn) {
         var book = service.getBookByISBN(isbn);

@@ -88,7 +88,7 @@ number of results and a list of strings
 
 #### Post endpoints
 
-note: as h2 is used as a database any data posted to the database will not be persisted over application restarts
+**note!!! as h2 is used as a database any data posted to the database will not be persisted over application restarts**
 
 ```
 POST /books
@@ -100,15 +100,15 @@ JSON request body
 {
   "title": "",
   "authors": "",
-  "average rating": 0.0,
   "isbn": "",
   "isbn13": "",
-  "language_code": "eng",
-  "num_pages": 0,
-  "ratings_count": 0,
-  "text_reviews_count": 0,
-  "publication_date": "yyyy-MM-dd",
-  "publisher": ""
+  "publisher": "",
+  "averageRating": 0,
+  "languageCode": "",
+  "numPages": 0,
+  "ratingsCount": 0,
+  "textReviewsCount": 0,
+  "publicationDate": "yyyy-MM-dd"
 }
 ```
 
@@ -116,4 +116,31 @@ JSON request body
 
 ```
 DELETE /books/{id} # deletes book with corresponding ID
+```
+
+#### Put Endpoints
+
+**note!!! as h2 is used as a database any data updated in the database will not be persisted over application restarts**
+
+```
+PUT /books/{id} # updates the book with corresponding ID with data in request body. 
+                # If book at ID does not exist then it will be created
+```
+
+JSON request body
+
+```json
+{
+  "title": "",
+  "authors": "",
+  "isbn": "",
+  "isbn13": "",
+  "publisher": "",
+  "averageRating": 0,
+  "languageCode": "",
+  "numPages": 0,
+  "ratingsCount": 0,
+  "textReviewsCount": 0,
+  "publicationDate": "yyyy-MM-dd"
+}
 ```
