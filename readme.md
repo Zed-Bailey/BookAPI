@@ -31,14 +31,14 @@ all endpoints are `GET` endpoints and will return a json response similar to the
   "bookID": 0,
   "title": "",
   "authors": "",
-  "average rating": 0.0,
   "isbn": "",
   "isbn13": "",
-  "language_code": "eng",
-  "num_pages": 0,
-  "ratings_count": 0,
-  "text_reviews_count": 0,
-  "publication_date": "yyyy-MM-dd",
+  "publisher": "",
+  "averageRating": 0,
+  "languageCode": "",
+  "numPages": 0,
+  "ratingsCount": 0,
+  "textReviewsCount": 0,
   "publisher": ""
 }
 
@@ -108,9 +108,11 @@ JSON request body
   "numPages": 0,
   "ratingsCount": 0,
   "textReviewsCount": 0,
-  "publicationDate": "yyyy-MM-dd"
+  "publicationDate": "yyyy-MM-dd",
+  "publisher" : ""
 }
 ```
+
 
 #### Delete Endpoints
 
@@ -141,6 +143,7 @@ JSON request body
   "numPages": 0,
   "ratingsCount": 0,
   "textReviewsCount": 0,
-  "publicationDate": "yyyy-MM-dd"
+  "publicationDate": "yyyy-MM-dd",
+  "publisher" : ""
 }
 ```
